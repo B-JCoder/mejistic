@@ -255,7 +255,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                      <p className="text-muted-foreground">416-279-0292</p>
+                      <p className="text-muted-foreground">416-269-0292</p>
                       <p className="text-sm text-muted-foreground">Call us for immediate assistance</p>
                     </div>
                   </div>
@@ -315,7 +315,7 @@ export default function ContactPage() {
                       size="lg"
                     >
                       <Phone className="mr-2 h-5 w-5" />
-                      Call Now: 416-279-0292
+                      Call Now: 416-269-0292
                     </Button>
                     <Button
                       onClick={handleSiteVisit}

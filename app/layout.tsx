@@ -110,7 +110,7 @@ export default function RootLayout({
               description:
                 "Premier luxury event venue in Greater Toronto Area specializing in weddings, corporate events, and celebrations.",
               url: "https://grandmajesticbanquet.com",
-              telephone: "+1-416-279-0292",
+              telephone: "+1-416 269 0292",
               email: "gmbanquet@bellnet.ca",
               address: {
                 "@type": "PostalAddress",

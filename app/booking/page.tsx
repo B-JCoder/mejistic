@@ -98,9 +98,9 @@ export default function BookingPage() {
               your event details and provide a customized quote.
             </p>
             <div className="space-y-4">
-              <Button className="gold-accent" onClick={() => (window.location.href = "tel:+14162790292")}>
+              <Button className="gold-accent" onClick={() => (window.location.href = "tel:+14162690292")}>
                 <Phone className="mr-2 h-4 w-4" />
-                Call Us: 416-279-0292
+                Call Us: 416-269-0292
               </Button>
               <p className="text-sm text-muted-foreground">
                 For immediate assistance or urgent requests, please call us directly.

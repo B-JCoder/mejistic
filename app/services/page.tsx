@@ -265,7 +265,7 @@ export default function ServicesPage() {
               variant="outline"
               className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent w-full sm:w-auto"
             >
-              Call 416-279-0292
+              Call 416-269-0292
             </Button>
           </div>
         </div>

@@ -141,7 +141,7 @@ export default function Footer() {
                   onClick={handlePhoneCall}
                   className="text-gray-300 hover:text-gold transition-colors duration-300 text-sm cursor-pointer"
                 >
-                  416-279-0292
+                  416-269-0292
                 </button>
               </div>
 

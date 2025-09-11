@@ -522,7 +522,7 @@ export default function HomePage() {
                 </div>
                 <div className="text-center">
                   <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Call Us</h3>
-                  <p className="text-muted-foreground text-sm sm:text-base">416-279-0292</p>
+                  <p className="text-muted-foreground text-sm sm:text-base">416 269 0292</p>
                 </div>
               </button>
 
