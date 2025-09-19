@@ -167,7 +167,7 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-gold/20">
+        {/* <div className="mt-12 pt-8 border-t border-gold/20">
           <div className="max-w-md mx-auto text-center">
             <h4 className="text-lg font-serif text-gold font-semibold mb-4">Stay Updated</h4>
             <p className="text-gray-300 text-sm mb-4">
@@ -196,21 +196,14 @@ export default function Footer() {
               </form>
             )}
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gold/20 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-gray-400 text-sm">
-            © 2024 Grand Majestic Banquet and Convention Centre. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-gold/20 text-center flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <p className="text-gray-400 text-sm text-center">
+            © 2024 Grand Majestic Banquet. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <Link href="/privacy" className="text-gray-400 hover:text-gold transition-colors duration-300 text-sm">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-gold transition-colors duration-300 text-sm">
-              Terms of Service
-            </Link>
-          </div>
+   
         </div>
       </div>
     </footer>
