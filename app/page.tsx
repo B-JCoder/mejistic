@@ -280,20 +280,27 @@ export default function HomePage() {
                   icon: <Award className="h-5 w-5 sm:h-6 sm:w-6" />,
                 },
               ].map((amenity, index) => (
-                <div
-                  key={index}
-                  className={`flex items-start space-x-4 p-4 sm:p-6 rounded-lg hover:bg-background/50 transition-colors duration-300 group hover-glow ${visibleSections.has("amenities-section") ? `animate-slide-in-left animation-delay-${(index + 1) * 100}` : "opacity-0"}`}
-                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
-                    <div className="text-primary">{amenity.icon}</div>
-                  </div>
-                  <div>
-                    <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2">{amenity.title}</h3>
-                    <p className="text-sm sm:text-base text-muted-foreground text-pretty leading-relaxed">
-                      {amenity.description}
-                    </p>
-                  </div>
-                </div>
+             <div
+  key={index}
+  className={`flex items-start space-x-4 p-6 sm:p-8 rounded-2xl border border-border bg-card shadow-sm hover:shadow-lg transition-all duration-300 group hover-glow ${
+    visibleSections.has("amenities-section")
+      ? `animate-slide-in-left animation-delay-${(index + 1) * 100}`
+      : "opacity-0"
+  }`}
+>
+  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300 shadow-inner">
+    <div className="text-primary">{amenity.icon}</div>
+  </div>
+  <div>
+    <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
+      {amenity.title}
+    </h3>
+    <p className="text-sm sm:text-base text-muted-foreground text-pretty leading-relaxed">
+      {amenity.description}
+    </p>
+  </div>
+</div>
+
               ))}
             </div>
           </div>
