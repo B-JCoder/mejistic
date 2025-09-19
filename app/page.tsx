@@ -83,38 +83,44 @@ export default function HomePage() {
         {/* Hero Section */}
        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
   {/* Background Image */}
-  <div className="absolute inset-0 z-0">
+   <div className="absolute inset-0 z-0">
     <img
       src="https://i.pinimg.com/1200x/f1/1a/76/f11a7623f97d7748e47da44483a0dd00.jpg"
       alt="Grand Majestic Banquet Hall"
       className="w-full h-full object-cover"
     />
-    <div className="absolute inset-0 bg-black/70"></div>
+    {/* Dark overlay */}
+    <div className="absolute inset-0 bg-black/50"></div>
+
+    {/* Spotlight overlay */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,128,31,0.45)_0%,rgba(0,0,0,0.9)_80%)] mix-blend-screen"></div>
   </div>
 
-  {/* Hero Content */}
-  <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2 sm:space-y-3 md:space-y-4">
-    {/* Badge */}
-    <Badge className="gold-accent text-sm sm:text-base md:text-lg px-3 sm:px-4 py-1.5 sm:py-2 animate-fade-in">
-      Premier Event Venue in GTA
-    </Badge>
+  {/* Hero Content (Logo Center) */}
+  <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
+    <div className="relative inline-block">
+      <Images
+        src="/images/grand-majestic-logo.png"
+        alt="Grand Majestic Logo"
+        width={380}
+        height={160}
+        className="mx-auto animate-slide-up 
+                   drop-shadow-[0_0_15px_#000] 
+                   drop-shadow-[0_0_35px_#A8801F] 
+                   drop-shadow-[0_0_70px_#A8801F]"
+      />
+    </div>
+  
 
-    {/* Logo */}
-    <Images
-      src="/images/grand-majestic-logo.png"
-      alt="Grand Majestic Logo"
-      width={300}
-      height={120}
-      className="mx-auto max-w-[70%] sm:max-w-[55%] md:max-w-[380px] animate-slide-up"
-    />
 
-    {/* Subtitle */}
-    <p className="text-sm sm:text-base md:text-lg text-foreground font-light animate-slide-up animation-delay-200">
+
+<Badge className="text-3xl gold-accent sm:text-base md:text-2xl px-4 sm:px-6 py-1.9 sm:py-1 animate-fade-in">
       Banquet and Convention Centre
-    </p>
+    </Badge>
+    {/* Subtitle */}
 
     {/* Description */}
-    <p className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-2xl mx-auto animate-slide-up animation-delay-400 leading-snug">
+    <p className="text-xs sm:text-sm md:text-base text-primary max-w-2xl mx-auto animate-slide-up animation-delay-400 leading-snug">
       Where your most precious moments become unforgettable memories. Elegant venues for weddings, corporate
       events, and celebrations.
     </p>
