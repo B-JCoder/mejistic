@@ -99,16 +99,14 @@ export default function HomePage() {
   {/* Hero Content (Logo Center) */}
   <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
     <div className="relative inline-block">
-      <Images
-        src="/images/grand-majestic-logo.png"
-        alt="Grand Majestic Logo"
-        width={380}
-        height={160}
-        className="mx-auto animate-slide-up 
-                   drop-shadow-[0_0_15px_#000] 
-                   drop-shadow-[0_0_35px_#A8801F] 
-                   drop-shadow-[0_0_70px_#A8801F]"
-      />
+     <Images
+  src="/images/grand-majestic-logo.png"
+  alt="Grand Majestic Logo"
+  width={380}
+  height={160}
+  className="mx-auto animate-slide-up [filter:drop-shadow(0_0_15px_#000)_drop-shadow(0_0_35px_#A8801F)_drop-shadow(0_0_70px_#A8801F)]"
+/>
+
     </div>
   
 
