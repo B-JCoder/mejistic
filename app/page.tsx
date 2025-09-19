@@ -85,11 +85,11 @@ export default function HomePage() {
   {/* Background Image */}
   <div className="absolute inset-0 z-0">
     <img
-      src="/images/hero-banquet-hall.png"
+      src="https://i.pinimg.com/1200x/f1/1a/76/f11a7623f97d7748e47da44483a0dd00.jpg"
       alt="Grand Majestic Banquet Hall"
       className="w-full h-full object-cover"
     />
-    <div className="absolute inset-0 bg-black/60"></div>
+    <div className="absolute inset-0 bg-black/70"></div>
   </div>
 
   {/* Hero Content */}
@@ -103,7 +103,7 @@ export default function HomePage() {
     <Images
       src="/images/grand-majestic-logo.png"
       alt="Grand Majestic Logo"
-      width={400}
+      width={300}
       height={120}
       className="mx-auto max-w-[70%] sm:max-w-[55%] md:max-w-[380px] animate-slide-up"
     />
@@ -144,44 +144,20 @@ export default function HomePage() {
 
 
         {/* Stats Section */}
-        <section
-          className="py-12 sm:py-16 px-4 bg-card/50"
-          data-animate
-          id="stats-section"
-          aria-label="Company statistics and achievements"
-        >
-          <div className="max-w-6xl mx-auto">
-            <div
-              className={`grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 ${visibleSections.has("stats-section") ? "animate-fade-in" : "opacity-0"}`}
-            >
-              {isLoading
-                ? [...Array(4)].map((_, index) => <StatSkeleton key={index} />)
-                : [
-                    { number: "15+", label: "Years Experience", icon: <Award className="h-5 w-5 sm:h-6 sm:w-6" /> },
-                    { number: "500+", label: "Events Hosted", icon: <Star className="h-5 w-5 sm:h-6 sm:w-6" /> },
-                    { number: "300", label: "Guest Capacity", icon: <Users className="h-5 w-5 sm:h-6 sm:w-6" /> },
-                    { number: "24/7", label: "Event Support", icon: <Clock className="h-5 w-5 sm:h-6 sm:w-6" /> },
-                  ].map((stat, index) => (
-                    <div
-                      key={index}
-                      className={`text-center group hover-scale cursor-pointer ${visibleSections.has("stats-section") ? `animate-scale-in animation-delay-${(index + 1) * 200}` : "opacity-0"}`}
-                    >
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-primary/20 transition-colors duration-300 pulse-gold">
-                        <div className="text-primary" aria-hidden="true">
-                          {stat.icon}
-                        </div>
-                      </div>
-                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold gold-gradient-text-static mb-2">
-                        {stat.number}
-                      </div>
-                      <div className="text-xs sm:text-sm md:text-base text-muted-foreground font-medium">
-                        {stat.label}
-                      </div>
-                    </div>
-                  ))}
-            </div>
-          </div>
-        </section>
+     <section
+  className="py-16 px-4 bg-card/50 text-center relative overflow-hidden"
+  aria-label="Company statistics and achievements"
+>
+  <div className="max-w-3xl mx-auto">
+    <h2 className="text-4xl md:text-5xl font-extrabold gold-gradient-text mb-4">
+      Coming Soon
+    </h2>
+    <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+      Exciting milestones and achievements will be revealed soon. Stay tuned!
+    </p>
+  </div>
+</section>
+
 
         {/* Services Overview */}
         <section className="py-16 sm:py-20 px-4" data-animate id="services-section" aria-label="Our event services">
@@ -484,8 +460,8 @@ export default function HomePage() {
                   className="w-full h-auto rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-300"
                 />
                 <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-primary text-primary-foreground p-4 sm:p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-                  <div className="text-2xl sm:text-3xl font-bold gold-gradient-text-static">500+</div>
-                  <div className="text-xs sm:text-sm">Successful Events</div>
+                  
+                  <div className="text-xs sm:text-sm">Coming Soon</div>
                 </div>
               </div>
             </div>
