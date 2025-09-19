@@ -238,9 +238,9 @@ export default function BookingPage() {
                             <SelectValue placeholder="Select time" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="morning">Morning (9:00 AM - 12:00 PM)</SelectItem>
-                            <SelectItem value="afternoon">Afternoon (12:00 PM - 5:00 PM)</SelectItem>
-                            <SelectItem value="evening">Evening (5:00 PM - 11:00 PM)</SelectItem>
+                            <SelectItem value="morning">Morning (11:00 AM - 2:00 PM)</SelectItem>
+                            <SelectItem value="afternoon">Afternoon (3:00 PM - 5:00 PM)</SelectItem>
+                            <SelectItem value="evening">Evening (6:00 PM - 9:00 PM)</SelectItem>
                             <SelectItem value="flexible">Flexible</SelectItem>
                           </SelectContent>
                         </Select>
