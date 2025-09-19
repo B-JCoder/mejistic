@@ -28,7 +28,7 @@ export default function Footer() {
   }
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:gmbanquet@bellnet.ca"
+    window.location.href = "mailto:grandmajesticbanquethall@gmail.com"
   }
 
   return (
@@ -97,11 +97,7 @@ export default function Footer() {
                   Services
                 </Link>
               </li>
-              <li>
-                <Link href="/blog" className="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">
-                  Blog
-                </Link>
-              </li>
+            
               <li>
                 <Link href="/contact" className="text-gray-300 hover:text-gold transition-colors duration-300 text-sm">
                   Contact
@@ -151,7 +147,7 @@ export default function Footer() {
                   onClick={handleEmailClick}
                   className="text-gray-300 hover:text-gold transition-colors duration-300 text-sm cursor-pointer"
                 >
-                  gmbanquet@bellnet.ca
+                  grandmajesticbanquethall@gmail.com
                 </button>
               </div>
 

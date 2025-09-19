@@ -73,7 +73,7 @@ export default function HomePage() {
   }
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:gmbanquet@bellnet.ca"
+    window.location.href = "mailto:grandmajesticbanquethall@gmail.com"
   }
 
   return (
@@ -523,7 +523,7 @@ export default function HomePage() {
                 <div className="text-center">
                   <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Email Us</h3>
                   <p className="text-muted-foreground text-xs sm:text-sm md:text-base break-all">
-                    gmbanquet@bellnet.ca
+                    grandmajesticbanquethall@gmail.com
                   </p>
                 </div>
               </button>

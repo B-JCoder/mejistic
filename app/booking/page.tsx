@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -16,22 +15,19 @@ import { useState } from "react"
 
 export default function BookingPage() {
   const [currentStep, setCurrentStep] = useState(1)
-  const [isSubmitted, setIsSubmitted] = useState(false)
   const [formData, setFormData] = useState({
-    // Step 1: Event Details
+    // Step 1
     eventType: "",
     eventDate: "",
     eventTime: "",
     guestCount: "",
     duration: "",
-
-    // Step 2: Services
+    // Step 2
     services: [] as string[],
     cateringStyle: "",
     menuPreference: "",
     specialRequirements: "",
-
-    // Step 3: Contact & Budget
+    // Step 3
     name: "",
     email: "",
     phone: "",
@@ -47,30 +43,16 @@ export default function BookingPage() {
   }
 
   const handleServiceToggle = (service: string) => {
-    const currentServices = formData.services
-    const updatedServices = currentServices.includes(service)
-      ? currentServices.filter((s) => s !== service)
-      : [...currentServices, service]
-    handleInputChange("services", updatedServices)
+    setFormData((prev) => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter((s) => s !== service)
+        : [...prev.services, service],
+    }))
   }
 
-  const handleNext = () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1)
-    }
-  }
-
-  const handlePrevious = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1)
-    }
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Booking submitted:", formData)
-    setIsSubmitted(true)
-  }
+  const handleNext = () => currentStep < totalSteps && setCurrentStep((s) => s + 1)
+  const handlePrevious = () => currentStep > 1 && setCurrentStep((s) => s - 1)
 
   const isStepValid = () => {
     switch (currentStep) {
@@ -85,47 +67,19 @@ export default function BookingPage() {
     }
   }
 
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
-        <section className="py-20 px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <CheckCircle className="h-20 w-20 text-primary mx-auto mb-6" />
-            <h1 className="text-4xl font-bold gold-gradient-text mb-4">Booking Request Submitted!</h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Thank you for choosing Grand Majestic. Our event planning team will contact you within 24 hours to discuss
-              your event details and provide a customized quote.
-            </p>
-            <div className="space-y-4">
-              <Button className="gold-accent" onClick={() => (window.location.href = "tel:+14162690292")}>
-                <Phone className="mr-2 h-4 w-4" />
-                Call Us: 416-269-0292
-              </Button>
-              <p className="text-sm text-muted-foreground">
-                For immediate assistance or urgent requests, please call us directly.
-              </p>
-            </div>
-          </div>
-        </section>
-        <Footer />
-      </div>
-    )
-  }
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative py-16 bg-gradient-to-b from-background to-background/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 gold-gradient-text">Book Your Perfect Event</h1>
           <p className="text-lg text-muted-foreground mb-8">
             Let us help you create an unforgettable experience with our comprehensive event planning service.
           </p>
 
-          {/* Progress Indicator */}
+          {/* Progress */}
           <div className="flex justify-center items-center space-x-4 mb-8">
             {[1, 2, 3].map((step) => (
               <div key={step} className="flex items-center">
@@ -154,7 +108,7 @@ export default function BookingPage() {
         </div>
       </section>
 
-      {/* Booking Form */}
+      {/* Form */}
       <section className="py-12 px-4">
         <div className="max-w-3xl mx-auto">
           <Card className="border-border/50">
@@ -166,16 +120,43 @@ export default function BookingPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit}>
-                {/* Step 1: Event Details */}
+              <form
+                action="https://formsubmit.co/grandmajesticbanquethall@gmail.com"
+                method="POST"
+              >
+                {/* Required for FormSubmit */}
+                <input type="hidden" name="_subject" value="New Booking Request - Grand Majestic" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value="https://mejistic.vercel.app/thank-you" />
+
+                {/* Map formData */}
+                <input type="hidden" name="Event Type" value={formData.eventType} />
+                <input type="hidden" name="Guest Count" value={formData.guestCount} />
+                <input type="hidden" name="Event Date" value={formData.eventDate} />
+                <input type="hidden" name="Event Time" value={formData.eventTime} />
+                <input type="hidden" name="Event Duration" value={formData.duration} />
+                <input type="hidden" name="Services" value={formData.services.join(", ")} />
+                <input type="hidden" name="Catering Style" value={formData.cateringStyle} />
+                <input type="hidden" name="Menu Preference" value={formData.menuPreference} />
+                <input type="hidden" name="Special Requirements" value={formData.specialRequirements} />
+                <input type="hidden" name="Full Name" value={formData.name} />
+                <input type="hidden" name="Email" value={formData.email} />
+                <input type="hidden" name="Phone" value={formData.phone} />
+                <input type="hidden" name="Budget" value={formData.budget} />
+                <input type="hidden" name="How Did You Hear About Us" value={formData.hearAboutUs} />
+                <input type="hidden" name="Additional Notes" value={formData.additionalNotes} />
+
+                {/* --- Step 1 --- */}
                 {currentStep === 1 && (
                   <div className="space-y-6">
+                    {/* Event type & guest count */}
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="eventType">Event Type *</Label>
+                        <Label>Event Type *</Label>
                         <Select
                           value={formData.eventType}
-                          onValueChange={(value) => handleInputChange("eventType", value)}
+                          onValueChange={(v) => handleInputChange("eventType", v)}
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Select event type" />
@@ -189,16 +170,16 @@ export default function BookingPage() {
                             <SelectItem value="baby-shower">Baby Shower</SelectItem>
                             <SelectItem value="baptism">Baptism/Christening</SelectItem>
                             <SelectItem value="graduation">Graduation Party</SelectItem>
-                            <SelectItem value="other">Other Special Event</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="guestCount">Expected Guest Count *</Label>
+                        <Label>Expected Guest Count *</Label>
                         <Select
                           value={formData.guestCount}
-                          onValueChange={(value) => handleInputChange("guestCount", value)}
+                          onValueChange={(v) => handleInputChange("guestCount", v)}
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Number of guests" />
@@ -216,40 +197,43 @@ export default function BookingPage() {
                       </div>
                     </div>
 
+                    {/* Date & time */}
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="eventDate">Preferred Event Date *</Label>
+                        <Label>Preferred Event Date *</Label>
                         <Input
-                          id="eventDate"
                           type="date"
                           value={formData.eventDate}
-                          onChange={(e) => handleInputChange("eventDate", e.target.value)}
                           min={new Date().toISOString().split("T")[0]}
+                          onChange={(e) => handleInputChange("eventDate", e.target.value)}
                         />
                       </div>
-
                       <div className="space-y-2">
-                        <Label htmlFor="eventTime">Preferred Start Time</Label>
+                        <Label>Preferred Start Time</Label>
                         <Select
                           value={formData.eventTime}
-                          onValueChange={(value) => handleInputChange("eventTime", value)}
+                          onValueChange={(v) => handleInputChange("eventTime", v)}
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Select time" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="morning">Morning (11:00 AM - 2:00 PM)</SelectItem>
-                            <SelectItem value="afternoon">Afternoon (3:00 PM - 5:00 PM)</SelectItem>
-                            <SelectItem value="evening">Evening (6:00 PM - 9:00 PM)</SelectItem>
+                            <SelectItem value="morning">Morning (11 AM - 2 PM)</SelectItem>
+                            <SelectItem value="afternoon">Afternoon (3 PM - 5 PM)</SelectItem>
+                            <SelectItem value="evening">Evening (6 PM - 9 PM)</SelectItem>
                             <SelectItem value="flexible">Flexible</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
                     </div>
 
+                    {/* Duration */}
                     <div className="space-y-2">
-                      <Label htmlFor="duration">Event Duration</Label>
-                      <Select value={formData.duration} onValueChange={(value) => handleInputChange("duration", value)}>
+                      <Label>Event Duration</Label>
+                      <Select
+                        value={formData.duration}
+                        onValueChange={(v) => handleInputChange("duration", v)}
+                      >
                         <SelectTrigger>
                           <SelectValue placeholder="How long will your event last?" />
                         </SelectTrigger>
@@ -265,11 +249,12 @@ export default function BookingPage() {
                   </div>
                 )}
 
-                {/* Step 2: Services */}
+                {/* --- Step 2 --- */}
                 {currentStep === 2 && (
                   <div className="space-y-6">
+                    {/* Services */}
                     <div className="space-y-4">
-                      <Label>Select Services (Choose all that apply) *</Label>
+                      <Label>Select Services *</Label>
                       <div className="grid md:grid-cols-2 gap-3">
                         {[
                           "Full Catering Service",
@@ -299,18 +284,19 @@ export default function BookingPage() {
                       </div>
                     </div>
 
+                    {/* Catering & menu */}
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="cateringStyle">Catering Style</Label>
+                        <Label>Catering Style</Label>
                         <Select
                           value={formData.cateringStyle}
-                          onValueChange={(value) => handleInputChange("cateringStyle", value)}
+                          onValueChange={(v) => handleInputChange("cateringStyle", v)}
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Select catering style" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="plated">Plated Dinner Service</SelectItem>
+                            <SelectItem value="plated">Plated Dinner</SelectItem>
                             <SelectItem value="buffet">Buffet Style</SelectItem>
                             <SelectItem value="family-style">Family Style</SelectItem>
                             <SelectItem value="cocktail">Cocktail Reception</SelectItem>
@@ -320,10 +306,10 @@ export default function BookingPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="menuPreference">Menu Preference</Label>
+                        <Label>Menu Preference</Label>
                         <Select
                           value={formData.menuPreference}
-                          onValueChange={(value) => handleInputChange("menuPreference", value)}
+                          onValueChange={(v) => handleInputChange("menuPreference", v)}
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Select menu type" />
@@ -340,37 +326,34 @@ export default function BookingPage() {
                       </div>
                     </div>
 
+                    {/* Special requirements */}
                     <div className="space-y-2">
-                      <Label htmlFor="specialRequirements">Special Requirements or Dietary Restrictions</Label>
+                      <Label>Special Requirements</Label>
                       <Textarea
-                        id="specialRequirements"
                         value={formData.specialRequirements}
                         onChange={(e) => handleInputChange("specialRequirements", e.target.value)}
-                        placeholder="Please describe any special dietary needs, accessibility requirements, or other special requests..."
+                        placeholder="Dietary needs, accessibility requests, etc."
                         className="min-h-[100px]"
                       />
                     </div>
                   </div>
                 )}
 
-                {/* Step 3: Contact & Budget */}
+                {/* --- Step 3 --- */}
                 {currentStep === 3 && (
                   <div className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Full Name *</Label>
+                        <Label>Full Name *</Label>
                         <Input
-                          id="name"
                           value={formData.name}
                           onChange={(e) => handleInputChange("name", e.target.value)}
                           required
                         />
                       </div>
-
                       <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number *</Label>
+                        <Label>Phone Number *</Label>
                         <Input
-                          id="phone"
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
@@ -380,9 +363,8 @@ export default function BookingPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label>Email Address *</Label>
                       <Input
-                        id="email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
@@ -392,8 +374,11 @@ export default function BookingPage() {
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="budget">Estimated Budget</Label>
-                        <Select value={formData.budget} onValueChange={(value) => handleInputChange("budget", value)}>
+                        <Label>Estimated Budget</Label>
+                        <Select
+                          value={formData.budget}
+                          onValueChange={(v) => handleInputChange("budget", v)}
+                        >
                           <SelectTrigger>
                             <SelectValue placeholder="Select budget range" />
                           </SelectTrigger>
@@ -408,12 +393,11 @@ export default function BookingPage() {
                           </SelectContent>
                         </Select>
                       </div>
-
                       <div className="space-y-2">
-                        <Label htmlFor="hearAboutUs">How did you hear about us?</Label>
+                        <Label>How did you hear about us?</Label>
                         <Select
                           value={formData.hearAboutUs}
-                          onValueChange={(value) => handleInputChange("hearAboutUs", value)}
+                          onValueChange={(v) => handleInputChange("hearAboutUs", v)}
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Select source" />
@@ -432,19 +416,18 @@ export default function BookingPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="additionalNotes">Additional Notes</Label>
+                      <Label>Additional Notes</Label>
                       <Textarea
-                        id="additionalNotes"
                         value={formData.additionalNotes}
                         onChange={(e) => handleInputChange("additionalNotes", e.target.value)}
-                        placeholder="Tell us more about your vision, any specific requests, or questions you have..."
+                        placeholder="Tell us more about your vision or requests..."
                         className="min-h-[120px]"
                       />
                     </div>
                   </div>
                 )}
 
-                {/* Navigation Buttons */}
+                {/* Nav buttons */}
                 <div className="flex justify-between items-center mt-8 pt-6 border-t border-border/50">
                   <div>
                     {currentStep > 1 && (
@@ -453,10 +436,10 @@ export default function BookingPage() {
                       </Button>
                     )}
                   </div>
-
                   <div>
                     {currentStep < totalSteps ? (
-                      <Button type="button" onClick={handleNext} disabled={!isStepValid()} className="gold-accent">
+                      <Button type="button" onClick={handleNext} disabled={!isStepValid()}
+ className="gold-accent">
                         Next Step
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -473,6 +456,7 @@ export default function BookingPage() {
           </Card>
         </div>
       </section>
+      
 
       <Footer />
     </div>
