@@ -90,7 +90,7 @@ export default function HomePage() {
       className="w-full h-full object-cover"
     />
     {/* Dark overlay */}
-    <div className="absolute inset-0 bg-black/50"></div>
+    <div className="absolute inset-0 bg-black/30"></div>
 
     {/* Spotlight overlay */}
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,128,31,0.45)_0%,rgba(0,0,0,0.9)_80%)] mix-blend-screen"></div>
