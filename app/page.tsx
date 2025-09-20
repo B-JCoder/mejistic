@@ -112,9 +112,16 @@ export default function HomePage() {
 
 
 
-<Badge className="text-3xl gold-accent sm:text-base md:text-2xl px-4 sm:px-6 py-1.9 sm:py-1 animate-fade-in">
-      Banquet and Convention Centre
-    </Badge>
+<Badge className="
+  gold-accent 
+  animate-fade-in 
+  text-lg sm:text-base md:text-2xl lg:text-3xl 
+  px-3 sm:px-4 md:px-6 
+  py-1 sm:py-1.5 md:py-2
+">
+  Banquet and Convention Centre
+</Badge>
+
     {/* Subtitle */}
 
     {/* Description */}
