@@ -457,19 +457,21 @@ export default function HomePage() {
   name: "Sarah & Michael",
   event: "Wedding Reception",
   rating: 5,
-  text: "Our wedding was beyond magical at Grand Majestic. The staff treated us like family and the venue looked straight out of a dream. Can’t wait to attend more events here!",
+  text: "I can’t wait to be part of this amazing venue! The Grand Majestic looks like the perfect place for unforgettable events. I’m already excited to celebrate here.",
 },
 {
   name: "Corporate Solutions Inc.",
   event: "Annual Conference",
   rating: 5,
-  text: "Everything was handled flawlessly from setup to execution. The facilities are top-notch, and our guests were impressed. We’re already planning our next event here!",
+  text: "So thrilled for the opening of the Grand Majestic Banquet and Convention Center. The energy, elegance, and attention to detail already feel unmatched. Can’t wait to host my events here!",
+
 },
 {
   name: "The Johnson Family",
   event: "50th Anniversary",
   rating: 5,
-  text: "The entire celebration was unforgettable. The elegant setting and warm service made the night so special. Can’t wait to do more family events here!",
+  text: "I’ve been keeping an eye on this project and it looks incredible. I can’t wait to create memories and host special occasions at the Grand Majestic—it’s going to be the go-to event space!",
+
 },
                   ].map((testimonial, index) => (
                     <Card
