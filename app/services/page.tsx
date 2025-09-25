@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Heart, Users, Briefcase, GraduationCap, Baby, Gift, Sparkles, Calendar, CheckCircle, Star } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import Footer from "@/components/footer"
 
 export default function ServicesPage() {
   const router = useRouter()
@@ -270,6 +271,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

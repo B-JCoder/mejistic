@@ -3,7 +3,7 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Star,
@@ -20,8 +20,14 @@ import {
   Quote,
   ArrowDown,
   ChevronRight,
+  Baby,
+  Briefcase,
+  Gift,
+  GraduationCap,
+  CheckCircle,
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react";
 import ImageWithFallback from "@/components/image-with-fallback";
 import {
@@ -31,9 +37,105 @@ import {
 } from "@/components/loading-skeleton";
 import Images from "next/image";
 export default function HomePage() {
+ const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false);
   const [visibleSections, setVisibleSections] = useState(new Set());
   const [isLoading, setIsLoading] = useState(true);
+    const handleServiceBooking = (serviceType: string) => {
+    router.push(`/contact?service=${encodeURIComponent(serviceType)}`)
+  }
+  const services = [
+    {
+      title: "Weddings",
+      description:
+        "Create the wedding of your dreams in our elegant banquet halls with personalized service and attention to every detail.",
+      icon: <Heart className="h-8 w-8" />,
+      features: ["Bridal suite", "Dance floor", "Professional lighting", "Customizable decor", "Wedding coordination"],
+      image: "/images/wedding-setup.png",
+      popular: true,
+    },
+    {
+      title: "Corporate Events",
+      description:
+        "Professional venues perfect for meetings, conferences, product launches, and corporate celebrations.",
+      icon: <Briefcase className="h-8 w-8" />,
+      features: [
+        "AV equipment",
+        "Presentation setup",
+        "Networking spaces",
+        "Catering options",
+        "Professional atmosphere",
+      ],
+      image: "/images/corporate-event.png",
+      popular: true,
+    },
+    {
+      title: "Birthday Celebrations",
+      description: "Make milestone birthdays unforgettable with our festive spaces and celebration packages.",
+      icon: <Gift className="h-8 w-8" />,
+      features: [
+        "Themed decorations",
+        "Entertainment space",
+        "Cake presentation",
+        "Photo opportunities",
+        "Party coordination",
+      ],
+      image: "/images/dance-floor.png",
+    },
+    {
+      title: "Bridal Showers",
+      description: "Intimate and elegant spaces perfect for celebrating the bride-to-be with friends and family.",
+      icon: <Sparkles className="h-8 w-8" />,
+      features: ["Intimate setting", "Brunch options", "Gift display area", "Photo backdrop", "Elegant ambiance"],
+      image: "/images/reception-setup.png",
+    },
+    {
+      title: "Baby Showers",
+      description: "Celebrate new beginnings in our warm and welcoming spaces designed for memorable baby showers.",
+      icon: <Baby className="h-8 w-8" />,
+      features: [
+        "Family-friendly setup",
+        "Gift station",
+        "Comfortable seating",
+        "Themed decorations",
+        "Catering options",
+      ],
+      image: "/images/reception-setup.png",
+    },
+    {
+      title: "Baptisms & Religious Celebrations",
+      description: "Honor sacred moments with our respectful and beautiful venues for religious celebrations.",
+      icon: <Star className="h-8 w-8" />,
+      features: [
+        "Sacred atmosphere",
+        "Family gathering space",
+        "Traditional setup",
+        "Ceremonial arrangements",
+        "Reception area",
+      ],
+      image: "/images/hero-banquet-hall.png",
+    },
+    {
+      title: "Proposals & Engagements",
+      description: "Create the perfect romantic setting for life's most important question with our intimate spaces.",
+      icon: <Heart className="h-8 w-8" />,
+      features: [
+        "Romantic ambiance",
+        "Private setting",
+        "Customizable decor",
+        "Photography support",
+        "Celebration space",
+      ],
+      image: "/images/wedding-setup.png",
+    },
+    {
+      title: "Workshops & Training",
+      description: "Professional learning environments equipped with modern amenities for educational events.",
+      icon: <GraduationCap className="h-8 w-8" />,
+      features: ["Training setup", "AV equipment", "Comfortable seating", "Break areas", "Professional environment"],
+      image: "/images/corporate-event.png",
+    },
+  ]
 
   useEffect(() => {
     setIsLoaded(true);
@@ -172,20 +274,9 @@ export default function HomePage() {
         </section>
 
         {/* Services Overview */}
-        <section
-          className="py-16 sm:py-20 px-4"
-          data-animate
-          id="services-section"
-          aria-label="Our event services"
-        >
-          <div className="max-w-7xl mx-auto">
-            <div
-              className={`text-center mb-12 sm:mb-16 ${
-                visibleSections.has("services-section")
-                  ? "animate-slide-up"
-                  : "opacity-0"
-              }`}
-            >
+
+     <section className="py-16 sm:py-20 px-4">
+            <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold gold-gradient-text mb-4">
                 Exceptional Events
               </h2>
@@ -194,74 +285,67 @@ export default function HomePage() {
                 perfect atmosphere for every occasion
               </p>
             </div>
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {services.map((service, index) => (
+              <Card
+                key={index}
+                className="group hover:border-primary transition-all duration-300 overflow-hidden relative"
+              >
+                {service.popular && (
+                  <Badge className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10 gold-accent text-xs sm:text-sm">
+                    Popular
+                  </Badge>
+                )}
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {isLoading
-                ? [...Array(3)].map((_, index) => <CardSkeleton key={index} />)
-                : [
-                    {
-                      title: "Weddings",
-                      description:
-                        "Make your special day unforgettable with our elegant banquet halls and personalized service",
-                      icon: <Sparkles className="h-6 w-6 sm:h-8 sm:w-8" />,
-                      image: "/images/wedding-setup.png",
-                      alt: "Elegant wedding setup with white floral backdrop and gold throne chairs",
-                    },
-                    {
-                      title: "Corporate Events",
-                      description:
-                        "Professional venues for meetings, conferences, and corporate celebrations",
-                      icon: <Users className="h-6 w-6 sm:h-8 sm:w-8" />,
-                      image: "/images/corporate-event.png",
-                      alt: "Corporate event setup with professional staging and blue branding",
-                    },
-                    {
-                      title: "Private Parties",
-                      description:
-                        "Birthdays, anniversaries, and special celebrations in luxurious settings",
-                      icon: <Star className="h-6 w-6 sm:h-8 sm:w-8" />,
-                      image: "/images/dance-floor.png",
-                      alt: "Modern banquet hall with blue ceiling lighting and white dance floor",
-                    },
-                  ].map((service, index) => (
-                    <Card
-                      key={index}
-                      className={`group hover:border-primary hover:shadow-xl transition-all duration-300 overflow-hidden hover-lift hover-glow ${
-                        visibleSections.has("services-section")
-                          ? `animate-slide-up animation-delay-${
-                              (index + 1) * 200
-                            }`
-                          : "opacity-0"
-                      }`}
-                    >
-                      <div className="relative h-48 sm:h-56 md:h-48 lg:h-56 overflow-hidden">
-                        <ImageWithFallback
-                          src={service.image || "/placeholder.svg"}
-                          alt={service.alt}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          width={400}
-                          height={300}
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300"></div>
-                        <div className="absolute top-4 left-4 text-primary glass-effect rounded-full p-2 sm:p-3">
-                          {service.icon}
-                        </div>
-                      </div>
-                      <CardContent className="p-4 sm:p-6">
-                        <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-bold gold-gradient-text-static mb-2 sm:mb-3">
-                          {service.title}
-                        </h3>
-                        <p className="text-sm sm:text-base text-muted-foreground text-pretty leading-relaxed">
-                          {service.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-            </div>
+                <div className="relative h-40 sm:h-48 overflow-hidden">
+                  <img
+                    src={service.image || "/placeholder.svg"}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300"></div>
+                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4 text-primary bg-background/20 backdrop-blur-sm rounded-full p-2 sm:p-3">
+                    {service.icon}
+                  </div>
+                </div>
+
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="text-xl sm:text-2xl font-serif text-primary">{service.title}</CardTitle>
+                </CardHeader>
+
+                <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
+                  <p className="text-sm sm:text-base text-muted-foreground text-pretty">{service.description}</p>
+
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-foreground text-sm sm:text-base">Included Features:</h4>
+                    <ul className="space-y-1">
+                      {service.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="flex items-center space-x-2 text-xs sm:text-sm text-muted-foreground"
+                        >
+                          <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Button
+                    onClick={() => handleServiceBooking(service.title)}
+                    className="w-full gold-accent group-hover:scale-105 transition-transform duration-200 text-sm sm:text-base"
+                  >
+                    <Calendar className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+                    Book This Service
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* Amenities Section */}
         <section
@@ -640,6 +724,7 @@ export default function HomePage() {
                   <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
                     Email Us
                   </h3>
+                  
                   <p className="text-muted-foreground text-xs sm:text-sm md:text-base break-all">
                     grandmajesticbanquethall@gmail.com
                   </p>
@@ -654,9 +739,15 @@ export default function HomePage() {
                   <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
                     Visit Us
                   </h3>
-                  <p className="text-muted-foreground text-sm sm:text-base text-center">
-                    2648 Eglinton Ave East, GTA
-                  </p>
+                 <div className="flex items-start space-x-3">
+  
+  <div>
+    <p className="text-gray-300 text-sm">2648 Eglinton Ave East</p>
+    <p className="text-gray-300 text-sm">Toronto, ON M1K 2S3</p>
+    <p className="text-gray-300 text-sm">Canada</p>
+  </div>
+</div>
+
                 </div>
               </div>
             </div>

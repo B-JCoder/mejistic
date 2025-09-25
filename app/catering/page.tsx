@@ -53,7 +53,7 @@ export default function CateringPage() {
       ],
       image:
         "https://i.pinimg.com/1200x/2d/b1/f6/2db1f650bddd6c7f0c1aa5363fc8c993.jpg",
-      price: "Starting from $45/person",
+      price: "Starting from $100/person",
     },
     {
       title: "Social Celebrations",
@@ -352,7 +352,7 @@ const menuCategories = [
               variant="outline"
               className="text-lg px-8 py-3 border-primary/20 hover:border-primary/40 bg-transparent"
             >
-              Call (416) 279-0292
+              Call 416-269-0292
             </Button>
           </div>
         </div>

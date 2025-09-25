@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Heart, Users, Award, Star, CheckCircle, Calendar, Sparkles } from "lucide-react"
 import Link from "next/link"
+import Footer from "@/components/footer";
 
 export default function AboutPage() {
   const values = [
@@ -31,7 +32,7 @@ export default function AboutPage() {
 
   const achievements = [
     { number: "500+", label: "Successful Events" },
-    { number: "15+", label: "Years of Experience" },
+    { number: "50+", label: "Years of Experience" },
     { number: "98%", label: "Client Satisfaction" },
     { number: "50+", label: "Corporate Partners" },
   ]
@@ -70,55 +71,58 @@ export default function AboutPage() {
           <Badge className="mb-6 gold-accent text-lg px-4 py-2">Our Story</Badge>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-6 text-balance">About Us</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-            Creating unforgettable moments and lasting memories for over 15 years in the Greater Toronto Area
+            Creating unforgettable moments and lasting memories for over 50 years in the Greater Toronto Area
           </p>
         </div>
       </section>
 
       {/* Our Story */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">Our Story</h2>
-              <div className="space-y-6 text-lg text-muted-foreground">
-                <p className="text-pretty">
-                  Grand Majestic Banquet and Convention Centre was founded with a simple yet powerful vision: to create
-                  extraordinary experiences that bring people together and celebrate life's most precious moments.
-                </p>
-                <p className="text-pretty">
-                  Located in the heart of the Greater Toronto Area, we have been the premier choice for elegant events
-                  for over 15 years. Our commitment to excellence, attention to detail, and personalized service has
-                  made us a trusted partner for families and businesses alike.
-                </p>
-                <p className="text-pretty">
-                  From intimate gatherings to grand celebrations, we believe every event tells a unique story. Our role
-                  is to provide the perfect setting and flawless execution that allows your story to unfold beautifully.
-                </p>
-              </div>
-              <div className="mt-8">
-                <Link href="/contact">
-                  <Button size="lg" className="gold-accent">
-                    <Calendar className="mr-2 h-5 w-5" />
-                    Plan Your Event
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div className="relative">
-              <img
-                src="/images/corporate-event.png"
-                alt="Grand Majestic Interior"
-                className="w-full h-auto rounded-lg"
-              />
-              <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-lg">
-                <div className="text-3xl font-bold">15+</div>
-                <div className="text-sm">Years of Excellence</div>
-              </div>
-            </div>
-          </div>
+   <section className="py-20 px-4">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">Our Story</h2>
+        <div className="space-y-6 text-lg text-muted-foreground">
+          <p className="text-pretty">
+            Grand Majestic Banquet and Convention Centre was founded with a simple yet powerful vision: to create
+            extraordinary experiences that bring people together and celebrate life's most precious moments.
+          </p>
+          <p className="text-pretty">
+            Located in the heart of the Greater Toronto Area, we will be one of the GTA's premier choices for elegant
+            events, with a versatile flare and catering to a multitude of cultures. Our commitment to excellence,
+            attention to detail, and personalized service sets us apart as a trusted partner for families and
+            businesses alike.
+          </p>
+          <p className="text-pretty">
+            From intimate gatherings to grand celebrations, we believe every event tells a unique story. Our role is to
+            provide the perfect setting and flawless execution that allows your story to unfold beautifully.
+            <span className="font-semibold"> Scarborough</span>
+          </p>
         </div>
-      </section>
+        <div className="mt-8">
+          <Link href="/contact">
+            <Button size="lg" className="gold-accent">
+              <Calendar className="mr-2 h-5 w-5" />
+              Plan Your Event
+            </Button>
+          </Link>
+        </div>
+      </div>
+      <div className="relative">
+        <img
+          src="/images/corporate-event.png"
+          alt="Grand Majestic Interior"
+          className="w-full h-auto rounded-lg"
+        />
+        <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-lg">
+          <div className="text-2xl font-bold">50+</div>
+          <div className="text-xl">Years</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Our Values */}
       <section className="py-20 px-4 bg-card">
@@ -212,7 +216,7 @@ export default function AboutPage() {
             </p>
             <div className="flex items-center justify-center space-x-2">
               <CheckCircle className="h-6 w-6 text-primary" />
-              <span className="text-lg font-semibold text-foreground">Committed to Excellence Since 2009</span>
+              <span className="text-lg font-semibold text-foreground">Committed to Excellence Since 1975</span>
             </div>
           </div>
         </div>
@@ -245,6 +249,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

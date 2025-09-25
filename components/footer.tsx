@@ -123,13 +123,15 @@ export default function Footer() {
           <div className="space-y-4 mt-20">
             <h4 className="text-lg font-serif text-gold font-semibold">Contact Info</h4>
             <div className="space-y-3">
-              <div className="flex items-start space-x-3">
-                <MapPin className="text-gold mt-1 flex-shrink-0" size={16} />
-                <div>
-                  <p className="text-gray-300 text-sm">2648 Eglinton Ave East</p>
-                  <p className="text-gray-300 text-sm">Greater Toronto Area</p>
-                </div>
-              </div>
+             <div className="flex items-start space-x-3">
+  <MapPin className="text-gold mt-1 flex-shrink-0" size={16} />
+  <div>
+    <p className="text-gray-300 text-sm">2648 Eglinton Ave East</p>
+    <p className="text-gray-300 text-sm">Toronto, ON M1K 2S3</p>
+    <p className="text-gray-300 text-sm">Canada</p>
+  </div>
+</div>
+
 
               <div className="flex items-center space-x-3">
                 <Phone className="text-gold flex-shrink-0" size={16} />
