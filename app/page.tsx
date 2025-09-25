@@ -236,7 +236,7 @@ export default function HomePage() {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-2 justify-center items-center animate-slide-up animation-delay-600">
-              <Link href="/contact">
+              <Link href="/booking">
                 <Button
                   size="lg"
                   className="gold-accent text-sm sm:text-base px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 hover:scale-105 transition-transform duration-200"
@@ -538,34 +538,27 @@ export default function HomePage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {[
                 {
-                  src: "/images/wedding-setup.png",
+                  src: "/images/mg1.jpg",
                   alt: "Elegant Wedding Setup",
                 },
                 {
-                  src: "/images/corporate-event.png",
-                  alt: "Corporate Event Space",
+                  src: "/images/mg2.jpg",
+                  alt: "Elegant Wedding Setup",
                 },
                 {
-                  src: "/images/dance-floor.png",
-                  alt: "Dance Floor with Blue Lighting",
+                  src: "/images/mg3.jpg",
+                  alt: "Elegant Wedding Setup",
                 },
                 {
-                  src: "/images/reception-setup.png",
-                  alt: "Reception Table Setting",
+                  src: "/images/mg4.jpg",
+                  alt: "Elegant Wedding Setup",
                 },
                 {
-                  src: "/images/hero-banquet-hall.png",
-                  alt: "Main Banquet Hall",
+                  src: "/images/mg5.jpg",
+                  alt: "Elegant Wedding Setup",
                 },
-                {
-                  src: "/images/elegant-banquet-hall.png",
-                  alt: "Elegant Golden Ballroom",
-                },
-                {
-                  src: "/images/corporate-event.png",
-                  alt: "Business Meeting Setup",
-                },
-                { src: "/images/dance-floor.png", alt: "Evening Reception" },
+               
+              
               ].map((image, index) => (
                 <div
                   key={index}
@@ -584,13 +577,16 @@ export default function HomePage() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-white border-white hover:bg-white hover:text-black bg-transparent text-xs sm:text-sm"
-                    >
-                      View Details
-                    </Button>
+                  <Link href="/booking">
+                <Button
+                  size="sm"
+                  variant={"ghost"}
+                  className="gold-accent text-sm sm:text-base px-2 sm:px-3 md:px-4 py-1 sm:py-2 hover:scale-105 transition-transform duration-200"
+                >
+                  <Calendar className="mr-2 h-4 w-4" />
+                  Book Your Event
+                </Button>
+              </Link>
                   </div>
                 </div>
               ))}
