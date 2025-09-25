@@ -96,7 +96,7 @@ export default function AboutPage() {
           <p className="text-pretty">
             From intimate gatherings to grand celebrations, we believe every event tells a unique story. Our role is to
             provide the perfect setting and flawless execution that allows your story to unfold beautifully.
-            <span className="font-semibold"> Scarborough</span>
+           
           </p>
         </div>
         <div className="mt-8">
