@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import Navigation from "@/components/navigation"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Star,
   MapPin,
@@ -20,167 +20,178 @@ import {
   Quote,
   ArrowDown,
   ChevronRight,
-} from "lucide-react"
-import Link from "next/link"
-import { useState, useEffect } from "react"
-import ImageWithFallback from "@/components/image-with-fallback"
-import { CardSkeleton, StatSkeleton, TestimonialSkeleton } from "@/components/loading-skeleton"
-import Images from "next/image"
+} from "lucide-react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import ImageWithFallback from "@/components/image-with-fallback";
+import {
+  CardSkeleton,
+  StatSkeleton,
+  TestimonialSkeleton,
+} from "@/components/loading-skeleton";
+import Images from "next/image";
 export default function HomePage() {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [visibleSections, setVisibleSections] = useState(new Set())
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [visibleSections, setVisibleSections] = useState(new Set());
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoaded(true)
+    setIsLoaded(true);
 
     // Simulate initial loading
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
+      setIsLoading(false);
+    }, 1000);
 
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisibleSections((prev) => new Set([...prev, entry.target.id]))
+            setVisibleSections((prev) => new Set([...prev, entry.target.id]));
           }
-        })
+        });
       },
-      { threshold: 0.1, rootMargin: "50px" },
-    )
+      { threshold: 0.1, rootMargin: "50px" }
+    );
 
     // Observe all sections
-    const sections = document.querySelectorAll("[data-animate]")
-    sections.forEach((section) => observer.observe(section))
+    const sections = document.querySelectorAll("[data-animate]");
+    sections.forEach((section) => observer.observe(section));
 
     return () => {
-      observer.disconnect()
-      clearTimeout(timer)
-    }
-  }, [])
+      observer.disconnect();
+      clearTimeout(timer);
+    };
+  }, []);
 
   const scrollToGallery = () => {
-    const gallerySection = document.getElementById("gallery-section")
+    const gallerySection = document.getElementById("gallery-section");
     if (gallerySection) {
-      gallerySection.scrollIntoView({ behavior: "smooth" })
+      gallerySection.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   const handlePhoneCall = () => {
-    window.location.href = "tel:+14162790292"
-  }
+    window.location.href = "tel:+14162790292";
+  };
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:grandmajesticbanquethall@gmail.com"
-  }
+    window.location.href = "mailto:grandmajesticbanquethall@gmail.com";
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       <main>
         {/* Hero Section */}
-       <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
-  {/* Background Image */}
-   <div className="absolute inset-0 z-0">
-    <img
-      src="https://i.pinimg.com/1200x/f1/1a/76/f11a7623f97d7748e47da44483a0dd00.jpg"
-      alt="Grand Majestic Banquet Hall"
-      className="w-full h-full object-cover"
-    />
-    {/* Dark overlay */}
-    <div className="absolute inset-0 bg-black/30"></div>
+        <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://i.pinimg.com/1200x/f1/1a/76/f11a7623f97d7748e47da44483a0dd00.jpg"
+              alt="Grand Majestic Banquet Hall"
+              className="w-full h-full object-cover"
+            />
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/30"></div>
 
-    {/* Spotlight overlay */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,128,31,0.45)_0%,rgba(0,0,0,0.9)_80%)] mix-blend-screen"></div>
-  </div>
+            {/* Spotlight overlay */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,128,31,0.45)_0%,rgba(0,0,0,0.9)_80%)] mix-blend-screen"></div>
+          </div>
 
-  {/* Hero Content (Logo Center) */}
-  <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
-    <div className="relative inline-block">
-     <Images
-  src="/images/grand-majestic-logo.png"
-  alt="Grand Majestic Logo"
-  width={380}
-  height={160}
-  className="mx-auto animate-slide-up [filter:drop-shadow(0_0_15px_#000)_drop-shadow(0_0_35px_#A8801F)_drop-shadow(0_0_70px_#A8801F)]"
-/>
+          {/* Hero Content (Logo Center) */}
+          <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 mb-20">
+            <div className="relative inline-block">
+              <Images
+                src="/images/grand-majestic-logo.png"
+                alt="Grand Majestic Logo"
+                width={480}
+                height={160}
+                className="mx-auto animate-slide-up [filter:drop-shadow(0_0_15px_#000)_drop-shadow(0_0_35px_#A8801F)_drop-shadow(0_0_70px_#A8801F)]"
+              />
+            </div>
 
-    </div>
-  
+            <Badge
+              className="
+                     gold-accent 
+                    animate-fade-in 
+                          text-md sm:text-base md:text-xl lg:text-2xl 
+                    px-3 sm:px-4 md:px-6 
+                   py-1 sm:py-1.5 md:py-2
+"
+            >
+              Banquet and Convention Centre
+            </Badge>
 
+            {/* Subtitle */}
 
+            {/* Description */}
+            <p className="text-xs sm:text-sm md:text-base text-white max-w-2xl mx-auto animate-slide-up animation-delay-400 leading-snug">
+              Where your most precious moments become unforgettable memories.
+              Elegant venues for weddings, corporate events, and celebrations.
+            </p>
 
-<Badge className="
-  gold-accent 
-  animate-fade-in 
-  text-lg sm:text-base md:text-2xl lg:text-3xl 
-  px-3 sm:px-4 md:px-6 
-  py-1 sm:py-1.5 md:py-2
-">
-  Banquet and Convention Centre
-</Badge>
-
-    {/* Subtitle */}
-
-    {/* Description */}
-    <p className="text-xs sm:text-sm md:text-base text-primary max-w-2xl mx-auto animate-slide-up animation-delay-400 leading-snug">
-      Where your most precious moments become unforgettable memories. Elegant venues for weddings, corporate
-      events, and celebrations.
-    </p>
-
-    {/* Buttons */}
-    <div className="flex flex-col sm:flex-row gap-2 justify-center items-center animate-slide-up animation-delay-600">
-      <Link href="/contact">
-        <Button
-          size="lg"
-          className="gold-accent text-sm sm:text-base px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 hover:scale-105 transition-transform duration-200"
-        >
-          <Calendar className="mr-2 h-4 w-4" />
-          Book Your Event
-        </Button>
-      </Link>
-      <Button
-        size="lg"
-        variant="outline"
-        onClick={scrollToGallery}
-        className="text-sm sm:text-base px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent hover:scale-105 transition-all duration-200"
-      >
-        View Gallery
-      </Button>
-    </div>
-  </div>
-</section>
-
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-2 justify-center items-center animate-slide-up animation-delay-600">
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="gold-accent text-sm sm:text-base px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 hover:scale-105 transition-transform duration-200"
+                >
+                  <Calendar className="mr-2 h-4 w-4" />
+                  Book Your Event
+                </Button>
+              </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={scrollToGallery}
+                className="text-sm sm:text-base px-4 sm:px-5 md:px-6 py-2 sm:py-2.5  border-white text-white hover:bg-primary hover:text-primary-foreground bg-transparent font-blod hover:scale-105 transition-all duration-200"
+              >
+                View Gallery
+              </Button>
+            </div>
+          </div>
+        </section>
 
         {/* Stats Section */}
-     <section
-  className="py-16 px-4 bg-card/50 text-center relative overflow-hidden"
-  aria-label="Company statistics and achievements"
->
-  <div className="max-w-3xl mx-auto">
-    <h2 className="text-4xl md:text-5xl font-extrabold gold-gradient-text mb-4">
-      Coming Soon
-    </h2>
-    <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-      Exciting milestones and achievements will be revealed soon. Stay tuned!
-    </p>
-  </div>
-</section>
-
+        <section
+          className="py-16 px-4 bg-card/50 text-center relative overflow-hidden"
+          aria-label="Company statistics and achievements"
+        >
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-extrabold gold-gradient-text mb-4">
+              Coming Soon
+            </h2>
+            <p className="text-lg font-extrabold text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Exciting milestones and achievements will be revealed soon. Stay
+              tuned!
+            </p>
+          </div>
+        </section>
 
         {/* Services Overview */}
-        <section className="py-16 sm:py-20 px-4" data-animate id="services-section" aria-label="Our event services">
+        <section
+          className="py-16 sm:py-20 px-4"
+          data-animate
+          id="services-section"
+          aria-label="Our event services"
+        >
           <div className="max-w-7xl mx-auto">
             <div
-              className={`text-center mb-12 sm:mb-16 ${visibleSections.has("services-section") ? "animate-slide-up" : "opacity-0"}`}
+              className={`text-center mb-12 sm:mb-16 ${
+                visibleSections.has("services-section")
+                  ? "animate-slide-up"
+                  : "opacity-0"
+              }`}
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold gold-gradient-text mb-4">
                 Exceptional Events
               </h2>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-                From intimate gatherings to grand celebrations, we create the perfect atmosphere for every occasion
+                From intimate gatherings to grand celebrations, we create the
+                perfect atmosphere for every occasion
               </p>
             </div>
 
@@ -198,14 +209,16 @@ export default function HomePage() {
                     },
                     {
                       title: "Corporate Events",
-                      description: "Professional venues for meetings, conferences, and corporate celebrations",
+                      description:
+                        "Professional venues for meetings, conferences, and corporate celebrations",
                       icon: <Users className="h-6 w-6 sm:h-8 sm:w-8" />,
                       image: "/images/corporate-event.png",
                       alt: "Corporate event setup with professional staging and blue branding",
                     },
                     {
                       title: "Private Parties",
-                      description: "Birthdays, anniversaries, and special celebrations in luxurious settings",
+                      description:
+                        "Birthdays, anniversaries, and special celebrations in luxurious settings",
                       icon: <Star className="h-6 w-6 sm:h-8 sm:w-8" />,
                       image: "/images/dance-floor.png",
                       alt: "Modern banquet hall with blue ceiling lighting and white dance floor",
@@ -213,7 +226,13 @@ export default function HomePage() {
                   ].map((service, index) => (
                     <Card
                       key={index}
-                      className={`group hover:border-primary hover:shadow-xl transition-all duration-300 overflow-hidden hover-lift hover-glow ${visibleSections.has("services-section") ? `animate-slide-up animation-delay-${(index + 1) * 200}` : "opacity-0"}`}
+                      className={`group hover:border-primary hover:shadow-xl transition-all duration-300 overflow-hidden hover-lift hover-glow ${
+                        visibleSections.has("services-section")
+                          ? `animate-slide-up animation-delay-${
+                              (index + 1) * 200
+                            }`
+                          : "opacity-0"
+                      }`}
                     >
                       <div className="relative h-48 sm:h-56 md:h-48 lg:h-56 overflow-hidden">
                         <ImageWithFallback
@@ -245,10 +264,18 @@ export default function HomePage() {
         </section>
 
         {/* Amenities Section */}
-        <section className="py-16 sm:py-20 px-4 bg-card" data-animate id="amenities-section">
+        <section
+          className="py-16 sm:py-20 px-4 bg-card"
+          data-animate
+          id="amenities-section"
+        >
           <div className="max-w-7xl mx-auto">
             <div
-              className={`text-center mb-12 sm:mb-16 ${visibleSections.has("amenities-section") ? "animate-slide-up" : "opacity-0"}`}
+              className={`text-center mb-12 sm:mb-16 ${
+                visibleSections.has("amenities-section")
+                  ? "animate-slide-up"
+                  : "opacity-0"
+              }`}
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold gold-gradient-text mb-4">
                 Premium Amenities
@@ -262,22 +289,26 @@ export default function HomePage() {
               {[
                 {
                   title: "Crystal Chandeliers",
-                  description: "Stunning crystal lighting creates an elegant ambiance",
+                  description:
+                    "Stunning crystal lighting creates an elegant ambiance",
                   icon: <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />,
                 },
                 {
                   title: "Professional Sound System",
-                  description: "State-of-the-art audio equipment for speeches and music",
+                  description:
+                    "State-of-the-art audio equipment for speeches and music",
                   icon: <Users className="h-5 w-5 sm:h-6 sm:w-6" />,
                 },
                 {
                   title: "Spacious Dance Floor",
-                  description: "Polished floors perfect for dancing and entertainment",
+                  description:
+                    "Polished floors perfect for dancing and entertainment",
                   icon: <Heart className="h-5 w-5 sm:h-6 sm:w-6" />,
                 },
                 {
                   title: "Bridal Suite",
-                  description: "Private preparation room for the bride and bridal party",
+                  description:
+                    "Private preparation room for the bride and bridal party",
                   icon: <Star className="h-5 w-5 sm:h-6 sm:w-6" />,
                 },
                 {
@@ -287,31 +318,33 @@ export default function HomePage() {
                 },
                 {
                   title: "Climate Control",
-                  description: "Perfect temperature control for year-round comfort",
+                  description:
+                    "Perfect temperature control for year-round comfort",
                   icon: <Award className="h-5 w-5 sm:h-6 sm:w-6" />,
                 },
               ].map((amenity, index) => (
-             <div
-  key={index}
-  className={`flex items-start space-x-4 p-6 sm:p-8 rounded-2xl border border-border bg-card shadow-sm hover:shadow-lg transition-all duration-300 group hover-glow ${
-    visibleSections.has("amenities-section")
-      ? `animate-slide-in-left animation-delay-${(index + 1) * 100}`
-      : "opacity-0"
-  }`}
->
-  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300 shadow-inner">
-    <div className="text-primary">{amenity.icon}</div>
-  </div>
-  <div>
-    <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
-      {amenity.title}
-    </h3>
-    <p className="text-sm sm:text-base text-muted-foreground text-pretty leading-relaxed">
-      {amenity.description}
-    </p>
-  </div>
-</div>
-
+                <div
+                  key={index}
+                  className={`flex items-start space-x-4 p-6 sm:p-8 rounded-2xl border border-border bg-card shadow-sm hover:shadow-lg transition-all duration-300 group hover-glow ${
+                    visibleSections.has("amenities-section")
+                      ? `animate-slide-in-left animation-delay-${
+                          (index + 1) * 100
+                        }`
+                      : "opacity-0"
+                  }`}
+                >
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300 shadow-inner">
+                    <div className="text-primary">{amenity.icon}</div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
+                      {amenity.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-muted-foreground text-pretty leading-relaxed">
+                      {amenity.description}
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -325,13 +358,16 @@ export default function HomePage() {
                 What Our Clients Say
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-                Don't just take our word for it - hear from couples and event planners who chose Grand Majestic
+                Don't just take our word for it - hear from couples and event
+                planners who chose Grand Majestic
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {isLoading
-                ? [...Array(3)].map((_, index) => <TestimonialSkeleton key={index} />)
+                ? [...Array(3)].map((_, index) => (
+                    <TestimonialSkeleton key={index} />
+                  ))
                 : [
                     {
                       name: "Sarah & Michael",
@@ -352,13 +388,26 @@ export default function HomePage() {
                       text: "The elegant atmosphere and exceptional service made our anniversary celebration truly memorable. Highly recommend Grand Majestic!",
                     },
                   ].map((testimonial, index) => (
-                    <Card key={index} className="p-6 hover:shadow-lg transition-shadow duration-300">
+                    <Card
+                      key={index}
+                      className="p-6 hover:shadow-lg transition-shadow duration-300"
+                    >
                       <CardContent className="p-0">
                         <div className="flex items-center mb-4">
-                          <Quote className="h-8 w-8 text-primary/30 mr-2" aria-hidden="true" />
-                          <div className="flex" role="img" aria-label={`${testimonial.rating} star rating`}>
+                          <Quote
+                            className="h-8 w-8 text-primary/30 mr-2"
+                            aria-hidden="true"
+                          />
+                          <div
+                            className="flex"
+                            role="img"
+                            aria-label={`${testimonial.rating} star rating`}
+                          >
                             {[...Array(testimonial.rating)].map((_, i) => (
-                              <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                              <Star
+                                key={i}
+                                className="h-4 w-4 fill-primary text-primary"
+                              />
                             ))}
                           </div>
                         </div>
@@ -366,8 +415,12 @@ export default function HomePage() {
                           "{testimonial.text}"
                         </blockquote>
                         <div>
-                          <div className="font-semibold text-foreground">{testimonial.name}</div>
-                          <div className="text-sm text-muted-foreground">{testimonial.event}</div>
+                          <div className="font-semibold text-foreground">
+                            {testimonial.name}
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            {testimonial.event}
+                          </div>
                         </div>
                       </CardContent>
                     </Card>
@@ -377,10 +430,18 @@ export default function HomePage() {
         </section>
 
         {/* Gallery Section */}
-        <section id="gallery-section" className="py-16 sm:py-20 px-4 bg-card" data-animate>
+        <section
+          id="gallery-section"
+          className="py-16 sm:py-20 px-4 bg-card"
+          data-animate
+        >
           <div className="max-w-7xl mx-auto">
             <div
-              className={`text-center mb-12 sm:mb-16 ${visibleSections.has("gallery-section") ? "animate-slide-up" : "opacity-0"}`}
+              className={`text-center mb-12 sm:mb-16 ${
+                visibleSections.has("gallery-section")
+                  ? "animate-slide-up"
+                  : "opacity-0"
+              }`}
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold gold-gradient-text mb-4">
                 Event Gallery
@@ -392,18 +453,43 @@ export default function HomePage() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {[
-                { src: "/images/wedding-setup.png", alt: "Elegant Wedding Setup" },
-                { src: "/images/corporate-event.png", alt: "Corporate Event Space" },
-                { src: "/images/dance-floor.png", alt: "Dance Floor with Blue Lighting" },
-                { src: "/images/reception-setup.png", alt: "Reception Table Setting" },
-                { src: "/images/hero-banquet-hall.png", alt: "Main Banquet Hall" },
-                { src: "/images/elegant-banquet-hall.png", alt: "Elegant Golden Ballroom" },
-                { src: "/images/corporate-event.png", alt: "Business Meeting Setup" },
+                {
+                  src: "/images/wedding-setup.png",
+                  alt: "Elegant Wedding Setup",
+                },
+                {
+                  src: "/images/corporate-event.png",
+                  alt: "Corporate Event Space",
+                },
+                {
+                  src: "/images/dance-floor.png",
+                  alt: "Dance Floor with Blue Lighting",
+                },
+                {
+                  src: "/images/reception-setup.png",
+                  alt: "Reception Table Setting",
+                },
+                {
+                  src: "/images/hero-banquet-hall.png",
+                  alt: "Main Banquet Hall",
+                },
+                {
+                  src: "/images/elegant-banquet-hall.png",
+                  alt: "Elegant Golden Ballroom",
+                },
+                {
+                  src: "/images/corporate-event.png",
+                  alt: "Business Meeting Setup",
+                },
                 { src: "/images/dance-floor.png", alt: "Evening Reception" },
               ].map((image, index) => (
                 <div
                   key={index}
-                  className={`relative group overflow-hidden rounded-lg aspect-square hover-scale cursor-pointer ${visibleSections.has("gallery-section") ? `animate-scale-in animation-delay-${(index + 1) * 100}` : "opacity-0"}`}
+                  className={`relative group overflow-hidden rounded-lg aspect-square hover-scale cursor-pointer ${
+                    visibleSections.has("gallery-section")
+                      ? `animate-scale-in animation-delay-${(index + 1) * 100}`
+                      : "opacity-0"
+                  }`}
                 >
                   <img
                     src={image.src || "/placeholder.svg"}
@@ -440,22 +526,29 @@ export default function HomePage() {
                   {[
                     {
                       title: "Elegant Venues",
-                      description: "Beautifully designed spaces with luxurious amenities and stunning decor",
+                      description:
+                        "Beautifully designed spaces with luxurious amenities and stunning decor",
                     },
                     {
                       title: "Expert Service",
-                      description: "Professional event coordination and personalized attention to every detail",
+                      description:
+                        "Professional event coordination and personalized attention to every detail",
                     },
                     {
                       title: "Prime Location",
-                      description: "Conveniently located in the GTA with ample parking and easy accessibility",
+                      description:
+                        "Conveniently located in the GTA with ample parking and easy accessibility",
                     },
                     {
                       title: "Flexible Packages",
-                      description: "Customizable event packages to suit your budget and requirements",
+                      description:
+                        "Customizable event packages to suit your budget and requirements",
                     },
                   ].map((feature, index) => (
-                    <div key={index} className="flex items-start space-x-4 group">
+                    <div
+                      key={index}
+                      className="flex items-start space-x-4 group"
+                    >
                       <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-200"></div>
                       <div>
                         <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-bold gold-gradient-text-static mb-2 sm:mb-3">
@@ -478,7 +571,6 @@ export default function HomePage() {
                   className="w-full h-auto rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-300"
                 />
                 <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-primary text-primary-foreground p-4 sm:p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
-                  
                   <div className="text-xs sm:text-sm">Coming Soon</div>
                 </div>
               </div>
@@ -494,18 +586,31 @@ export default function HomePage() {
         >
           <div className="max-w-4xl mx-auto text-center">
             <h2
-              className={`text-3xl sm:text-4xl md:text-5xl font-serif font-bold gold-gradient-text mb-6 ${visibleSections.has("contact-section") ? "animate-slide-up" : "opacity-0"}`}
+              className={`text-3xl sm:text-4xl md:text-5xl font-serif font-bold gold-gradient-text mb-6 ${
+                visibleSections.has("contact-section")
+                  ? "animate-slide-up"
+                  : "opacity-0"
+              }`}
             >
               Ready to Plan Your Event?
             </h2>
             <p
-              className={`text-lg sm:text-xl text-muted-foreground mb-8 text-pretty leading-relaxed ${visibleSections.has("contact-section") ? "animate-slide-up animation-delay-200" : "opacity-0"}`}
+              className={`text-lg sm:text-xl text-muted-foreground mb-8 text-pretty leading-relaxed ${
+                visibleSections.has("contact-section")
+                  ? "animate-slide-up animation-delay-200"
+                  : "opacity-0"
+              }`}
             >
-              Contact us today to discuss your vision and let us create an unforgettable experience
+              Contact us today to discuss your vision and let us create an
+              unforgettable experience
             </p>
 
             <div
-              className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 ${visibleSections.has("contact-section") ? "animate-fade-in animation-delay-400" : "opacity-0"}`}
+              className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 ${
+                visibleSections.has("contact-section")
+                  ? "animate-fade-in animation-delay-400"
+                  : "opacity-0"
+              }`}
             >
               <button
                 onClick={handlePhoneCall}
@@ -515,8 +620,12 @@ export default function HomePage() {
                   <Phone className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-primary" />
                 </div>
                 <div className="text-center">
-                  <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Call Us</h3>
-                  <p className="text-muted-foreground text-sm sm:text-base">416 269 0292</p>
+                  <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                    Call Us
+                  </h3>
+                  <p className="text-muted-foreground text-sm sm:text-base">
+                    416 269 0292
+                  </p>
                 </div>
               </button>
 
@@ -528,7 +637,9 @@ export default function HomePage() {
                   <Mail className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-primary" />
                 </div>
                 <div className="text-center">
-                  <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Email Us</h3>
+                  <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                    Email Us
+                  </h3>
                   <p className="text-muted-foreground text-xs sm:text-sm md:text-base break-all">
                     grandmajesticbanquethall@gmail.com
                   </p>
@@ -540,21 +651,32 @@ export default function HomePage() {
                   <MapPin className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-primary" />
                 </div>
                 <div className="text-center">
-                  <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Visit Us</h3>
-                  <p className="text-muted-foreground text-sm sm:text-base text-center">2648 Eglinton Ave East, GTA</p>
+                  <h3 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                    Visit Us
+                  </h3>
+                  <p className="text-muted-foreground text-sm sm:text-base text-center">
+                    2648 Eglinton Ave East, GTA
+                  </p>
                 </div>
               </div>
             </div>
 
             <div
-              className={`flex flex-col sm:flex-row gap-4 justify-center items-center ${visibleSections.has("contact-section") ? "animate-slide-up animation-delay-600" : "opacity-0"}`}
+              className={`flex flex-col sm:flex-row gap-4 justify-center items-center ${
+                visibleSections.has("contact-section")
+                  ? "animate-slide-up animation-delay-600"
+                  : "opacity-0"
+              }`}
             >
               <Link href="/booking">
                 <Button
                   size="lg"
                   className="gold-accent text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 hover:scale-105 transition-transform duration-200 relative overflow-hidden min-h-11 min-w-11"
                 >
-                  <Calendar className="mr-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+                  <Calendar
+                    className="mr-2 h-4 w-4 sm:h-5 sm:w-5"
+                    aria-hidden="true"
+                  />
                   <span className="relative z-10">Book Consultation</span>
                 </Button>
               </Link>
@@ -573,5 +695,5 @@ export default function HomePage() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }

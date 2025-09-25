@@ -266,7 +266,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <p className="text-muted-foreground">gmbanquet@bellnet.ca</p>
+                      <p className="text-muted-foreground">grandmajesticbanquethall@gmail.com</p>
                       <p className="text-sm text-muted-foreground">We respond within 24 hours</p>
                     </div>
                   </div>

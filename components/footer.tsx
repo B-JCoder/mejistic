@@ -41,9 +41,9 @@ export default function Footer() {
               <Image
                 src="/images/grand-majestic-logo.png"
                 alt="Grand Majestic Banquet and Function Centre"
-                width={200}
-                height={67}
-                className="h-14 w-auto"
+                width={400}
+                height={150}
+                className="h-35 w-40"
               />
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
@@ -79,7 +79,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-4 mt-20">
             <h4 className="text-lg font-serif text-gold font-semibold">Quick Links</h4>
             <ul className="space-y-2">
               <li>
@@ -107,7 +107,7 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div className="space-y-4">
+          <div className="space-y-4 mt-20">
             <h4 className="text-lg font-serif text-gold font-semibold">Our Services</h4>
             <ul className="space-y-2">
               <li className="text-gray-300 text-sm">Weddings</li>
@@ -120,7 +120,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 mt-20">
             <h4 className="text-lg font-serif text-gold font-semibold">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">

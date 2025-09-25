@@ -36,8 +36,8 @@ export default function Navigation() {
     <nav
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg"
-          : "bg-background/80 backdrop-blur-sm border-b border-border/50"
+          ? "bg-background/45 backdrop-blur-md border-b border-border shadow-lg"
+          : "bg-background/70 backdrop-blur-sm border-b border-border/50"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,8 +48,8 @@ export default function Navigation() {
               src="/images/grand-majestic-logo.png"
               alt="Grand Majestic Banquet and Function Centre"
               width={300}
-              height={100}
-              className="h-20 w-auto group-hover:scale-105 transition-transform duration-200"
+              height={150}
+              className="h-25 w-auto group-hover:scale-105 transition-transform duration-200"
               priority
             />
           </Link>
