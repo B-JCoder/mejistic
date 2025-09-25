@@ -123,8 +123,8 @@ export default function ContactPage() {
                       </p>
                     </div>
                   ) : (
-                    <form
-                action="https://formsubmit.co/grandmajesticbanquethall@gmail.com"
+                <form
+                action="https://formsubmit.co/bilalcodes777@gmail.com"
                 method="POST"
               >
                       <div className="grid md:grid-cols-2 gap-4">
