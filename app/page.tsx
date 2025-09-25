@@ -453,24 +453,24 @@ export default function HomePage() {
                     <TestimonialSkeleton key={index} />
                   ))
                 : [
-                    {
-                      name: "Sarah & Michael",
-                      event: "Wedding Reception",
-                      rating: 5,
-                      text: "Grand Majestic made our wedding day absolutely perfect. The staff was incredible, the venue was stunning, and every detail was handled with care.",
-                    },
-                    {
-                      name: "Corporate Solutions Inc.",
-                      event: "Annual Conference",
-                      rating: 5,
-                      text: "Professional service, excellent facilities, and seamless execution. Our conference was a huge success thanks to the Grand Majestic team.",
-                    },
-                    {
-                      name: "The Johnson Family",
-                      event: "50th Anniversary",
-                      rating: 5,
-                      text: "The elegant atmosphere and exceptional service made our anniversary celebration truly memorable. Highly recommend Grand Majestic!",
-                    },
+                   {
+  name: "Sarah & Michael",
+  event: "Wedding Reception",
+  rating: 5,
+  text: "Our wedding was beyond magical at Grand Majestic. The staff treated us like family and the venue looked straight out of a dream. Can’t wait to attend more events here!",
+},
+{
+  name: "Corporate Solutions Inc.",
+  event: "Annual Conference",
+  rating: 5,
+  text: "Everything was handled flawlessly from setup to execution. The facilities are top-notch, and our guests were impressed. We’re already planning our next event here!",
+},
+{
+  name: "The Johnson Family",
+  event: "50th Anniversary",
+  rating: 5,
+  text: "The entire celebration was unforgettable. The elegant setting and warm service made the night so special. Can’t wait to do more family events here!",
+},
                   ].map((testimonial, index) => (
                     <Card
                       key={index}
