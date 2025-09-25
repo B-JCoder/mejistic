@@ -125,11 +125,11 @@ export default function Footer() {
             <div className="space-y-3">
              <div className="flex items-start space-x-3">
   <MapPin className="text-gold mt-1 flex-shrink-0" size={16} />
-  <div>
-    <p className="text-gray-300 text-sm">2648 Eglinton Ave East</p>
-    <p className="text-gray-300 text-sm">Toronto, ON M1K 2S3</p>
-    <p className="text-gray-300 text-sm">Canada</p>
-  </div>
+ <div>
+  <p className="text-gray-300 text-sm">2648 Eglinton Ave East</p>
+  <p className="text-gray-300 text-sm">Scarborough, ON M1K 2S3</p>
+  <span className="font-semibold">Canada</span>
+</div>
 </div>
 
 
