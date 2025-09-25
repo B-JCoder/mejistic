@@ -121,7 +121,7 @@ export default function BookingPage() {
             </CardHeader>
             <CardContent>
               <form
-                action="https://formsubmit.co/bilalcodes777@gmail.com"
+                action="https://formsubmit.co/grandmajesticbanquethall@gmail.com"
                 method="POST"
               >
                 {/* Required for FormSubmit */}
