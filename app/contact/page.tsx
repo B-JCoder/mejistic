@@ -123,7 +123,10 @@ export default function ContactPage() {
                       </p>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form
+                action="https://formsubmit.co/grandmajesticbanquethall@gmail.com"
+                method="POST"
+              >
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="name">Full Name *</Label>
